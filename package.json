@@ -1,0 +1,108 @@
+{
+  "name": "node-svc-template",
+  "version": "0.0.0",
+  "description": "Hip node starter with TS for container deployment",
+  "type": "module",
+  "main": "index.js",
+  "engines": {
+    "node": "17.7.2"
+  },
+  "scripts": {
+    "build": "tsm scripts/build.ts",
+    "run-dev": "tsm src/main.ts",
+    "fmt": "prettier --write src",
+    "lint:fix": "eslint src/ --fix",
+    "lint": "eslint 'src/**'",
+    "tc": "tsc"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "fastify": "^3.27.4",
+    "fastify-env": "^2.1.1",
+    "fastify-plugin": "^3.0.1",
+    "fastify-sensible": "^3.1.2",
+    "zod": "^3.14.2",
+    "zod-to-json-schema": "^3.11.3"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.21",
+    "@typescript-eslint/eslint-plugin": "^5.14.0",
+    "@typescript-eslint/parser": "^5.14.0",
+    "esbuild": "^0.14.27",
+    "eslint": "^8.11.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-import": "^2.25.4",
+    "pino-pretty": "^7.5.4",
+    "prettier": "^2.6.0",
+    "tsm": "^2.2.1",
+    "typescript": "^4.6.2"
+  },
+  "prettier": {
+    "semi": false,
+    "tabWidth": 2,
+    "trailingComma": "none",
+    "useTabs": false
+  },
+  "eslintConfig": {
+    "settings": {
+      "import/resolver": {
+        "typescript": {}
+      }
+    },
+    "env": {
+      "es2021": true
+    },
+    "extends": [
+      "prettier",
+      "eslint:recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "*.ts",
+          "*.tsx"
+        ],
+        "parserOptions": {
+          "project": [
+            "./tsconfig.json"
+          ]
+        }
+      },
+      {
+        "files": [
+          "*.spec.ts",
+          "*.spec.tsx"
+        ],
+        "rules": {
+          "@typescript-eslint/ban-ts-comment": 0
+        }
+      }
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaVersion": 12,
+      "sourceType": "module"
+    },
+    "plugins": [
+      "@typescript-eslint",
+      "import"
+    ],
+    "rules": {
+      "prefer-const": 0,
+      "@typescript-eslint/no-extra-semi": 0,
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        {
+          "argsIgnorePattern": "^_",
+          "varsIgnorePattern": "^_",
+          "caughtErrorsIgnorePattern": "^_"
+        }
+      ]
+    }
+  }
+}
