@@ -15,7 +15,7 @@ const tProduct = z.object({
 })
 
 export default fp(
-  async function gracefulExitPlugin(server, _) {
+  async function productRoute(server, _) {
     const ROUTE_BASE = "/product"
     /***************************************************************************/
 
